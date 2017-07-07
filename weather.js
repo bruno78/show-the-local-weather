@@ -1,27 +1,39 @@
 var skyconType = function(icon) {
-  if (icon === 'rain')
-    return Skycons.RAIN
-  else if(icon === 'snow')
-    return Skycons.SNOW
-  else if (icon === 'sleet')
-    return Skycons.SLEET
-  else if (icon === 'wind')
-    return Skycons.WIND
-  else if (icon === 'fog')
-    return Skycons.FOG
-  else if (icon === 'cloudy')
-    return Skycons.CLOUDY
-  else if (icon === 'partly-cloudy-day')
-    return Skycons.PARTLY_CLOUDLY_DAY
-  else if (icon === 'partly-cloudy-night')
-    return Skycons.PARTLY_CLOUDLY_NIGHT
-  else if (icon === 'clear-day')
-    return Skycons.CLEAR_DAY
-  else if (icon === 'clear-night')
-    return Skycons.CLEAR_NIGHT
-
-  return Skycons.CLOUDY
+  if (icon === 'rain') {
+    return Skycons.RAIN;
+  }
+  else if(icon === 'snow') {
+    return Skycons.SNOW;
+  }
+  else if (icon === 'sleet') {
+    return Skycons.SLEET;
+  }
+  else if (icon === 'wind') {
+    return Skycons.WIND;
+  }
+  else if (icon === 'fog') {
+    return Skycons.FOG;
+  }
+  else if (icon === 'cloudy') {
+    return Skycons.CLOUDY;
+  }
+  else if (icon === 'partly-cloudy-day') {
+    return Skycons.PARTLY_CLOUDY_DAY;
+  }
+  else if (icon === 'partly-cloudy-night') {
+    return Skycons.PARTLY_CLOUDY_NIGHT;
+  }
+  else if (icon === 'clear-day') {
+    return Skycons.CLEAR_DAY;
+  }
+  else if (icon === 'clear-night') {
+    return Skycons.CLEAR_NIGHT;
+  }
+  else {
+    return Skycons.CLOUDY;
+  }
 }
+
 var skycons = new Skycons({"color":"white"});
 
 $(document).ready(function(){
@@ -40,9 +52,9 @@ $(document).ready(function(){
         var summary = JSON.parse(JSON.stringify(data.currently.summary));
         var next = JSON.parse(JSON.stringify(data.hourly.summary));
         var nextHour = JSON.parse(JSON.stringify(data.minutely.summary));
-        var icon = JSON.stringify(data.currently.icon);
+        var icon = JSON.parse(JSON.stringify(data.currently.icon));
 
-        skycons.add("icon", skyconType(icon));
+        skycons.set("weather-icon", skyconType(icon));
 
         $(".temperature").html(temperature);
         $(".summary").html(summary);
