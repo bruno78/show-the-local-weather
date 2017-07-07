@@ -22,6 +22,7 @@ var skyconType = function(icon) {
 
   return Skycons.CLOUDY
 }
+var skycons = new Skycons({"color":"white"});
 
 $(document).ready(function(){
 
@@ -39,10 +40,10 @@ $(document).ready(function(){
         var summary = JSON.parse(JSON.stringify(data.currently.summary));
         var next = JSON.parse(JSON.stringify(data.hourly.summary));
         var nextHour = JSON.parse(JSON.stringify(data.minutely.summary));
-        var skycons = new Skycons({"color":"white"});
         var icon = JSON.stringify(data.currently.icon);
 
         skycons.add("icon", skyconType(icon));
+
         $(".temperature").html(temperature);
         $(".summary").html(summary);
         $(".next").html(next);
@@ -69,4 +70,5 @@ $(document).ready(function(){
       })
     })
   }
+  skycons.play();
 });
