@@ -78,7 +78,7 @@ $(document).ready(function(){
             $("#fahrenheit").removeClass("shaded");
             isCelsius= false;
           }
-        })
+        });
       })
     })
   }
